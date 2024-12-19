@@ -133,7 +133,9 @@ func (h *LibraryElementHandler) Update(existing, resource grizzly.Resource) erro
 }
 
 func (h *LibraryElementHandler) listElements() ([]string, error) {
+	PerPage := int64(1000)
 	params := library.NewGetLibraryElementsParams()
+	params.PerPage = &PerPage
 	client, err := h.Provider.(ClientProvider).Client()
 	if err != nil {
 		return nil, err
